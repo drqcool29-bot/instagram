@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram</title>
+    <meta name="description" content="Exact Instagram web application clone with realistic UI, verified badges, rich dummy data, and dark mode.">
+    <!-- Google Fonts: Inter & Grand Hotel for script logo -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Grand+Hotel&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://cdn.jsdelivr.net/npm/lucide@latest/dist/umd/lucide.min.js"></script>
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar Navigation (Desktop/Tablet) -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <a href="#" class="brand-logo" data-nav="home">
+                    <span class="instagram-script-logo">Instagram</span>
+                    <i data-lucide="camera" class="logo-icon"></i>
+                </a>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <a href="#" class="nav-item active" data-nav="home">
+                    <i data-lucide="home"></i>
+                    <span>Home</span>
+                </a>
+                <a href="#" class="nav-item" data-nav="search">
+                    <i data-lucide="search"></i>
+                    <span>Search</span>
+                </a>
+                <a href="#" class="nav-item" data-nav="explore">
+                    <i data-lucide="compass"></i>
+                    <span>Explore</span>
+                </a>
+                <a href="#" class="nav-item" data-nav="reels">
+                    <i data-lucide="clapperboard"></i>
+                    <span>Reels</span>
+                </a>
+                <a href="#" class="nav-item" data-nav="messages">
+                    <div class="icon-badge-wrapper">
+                        <i data-lucide="message-circle"></i>
+                        <span class="nav-badge" id="dm-badge">4</span>
+                    </div>
+                    <span>Messages</span>
+                </a>
+                <a href="#" class="nav-item" id="nav-notifications" onclick="alert('No new notifications right now!')">
+                    <i data-lucide="heart"></i>
+                    <span>Notifications</span>
+                </a>
+                <a href="#" class="nav-item" id="nav-create">
+                    <i data-lucide="plus-square"></i>
+                    <span>Create</span>
+                </a>
+                <a href="#" class="nav-item profile-link" data-nav="profile">
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80" alt="Profile" class="nav-avatar" id="sidebar-avatar">
+                    <span id="sidebar-username">alex_design</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <button class="nav-item theme-toggle-btn" id="theme-toggle">
+                    <i data-lucide="moon" id="theme-icon"></i>
+                    <span>Switch Theme</span>
+                </button>
+                <a href="#" class="nav-item" id="nav-more" onclick="alert('Settings and More options menu')">
+                    <i data-lucide="menu"></i>
+                    <span>More</span>
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- VIEW: HOME (FEED) -->
+            <section class="view active" id="view-home">
+                <div class="feed-layout">
+                    <div class="feed-main">
+                        <!-- Stories Tray -->
+                        <div class="stories-tray" id="stories-tray">
+                            <!-- Stories injected dynamically -->
+                        </div>
+
+                        <!-- Posts Feed -->
+                        <div class="posts-feed" id="posts-feed">
+                            <!-- Posts injected dynamically -->
+                        </div>
+                    </div>
+
+                    <!-- Right Sidebar Suggestions -->
+                    <aside class="feed-sidebar">
+                        <div class="current-user-card">
+                            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80" alt="Current User" class="user-avatar-lg" id="feed-sidebar-avatar">
+                            <div class="user-info">
+                                <div class="username-row">
+                                    <span class="username" id="feed-sidebar-username">alex_design</span>
+                                </div>
+                                <span class="full-name" id="feed-sidebar-fullname">Alex Morgan ✨</span>
+                            </div>
+                            <button class="action-link text-blue font-bold" id="switch-account-btn" onclick="alert('Account switcher mockup')">Switch</button>
+                        </div>
+
+                        <div class="suggestions-header">
+                            <span class="title font-bold text-secondary">Suggested for you</span>
+                            <button class="action-link font-bold text-primary" onclick="alert('Viewing all friend suggestions')">See All</button>
+                        </div>
+
+                        <div class="suggestions-list" id="suggestions-list">
+                            <!-- Suggestions injected dynamically -->
+                        </div>
+
+                        <footer class="sidebar-footer-links">
+                            <p>About · Help · Press · API · Jobs · Privacy · Terms</p>
+                            <p>Locations · Language · Meta Verified</p>
+                            <p class="copyright">© 2026 INSTAGRAM FROM META</p>
+                        </footer>
+                    </aside>
+                </div>
+            </section>
+
+            <!-- VIEW: SEARCH -->
+            <section class="view" id="view-search">
+                <div class="search-container">
+                    <div class="search-header">
+                        <h2>Search</h2>
+                        <div class="search-input-box">
+                            <i data-lucide="search"></i>
+                            <input type="text" id="search-input" placeholder="Search accounts, tags, places...">
+                            <button id="clear-search-btn" class="hidden"><i data-lucide="x-circle"></i></button>
+                        </div>
+                    </div>
+                    <div class="search-results-section">
+                        <div class="section-title-bar">
+                            <span id="search-section-title">Recent</span>
+                            <button class="action-link text-blue font-bold" id="clear-history-btn">Clear all</button>
+                        </div>
+                        <div class="search-list" id="search-results-list">
+                            <!-- Search items injected dynamically -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- VIEW: EXPLORE -->
+            <section class="view" id="view-explore">
+                <div class="explore-grid" id="explore-grid">
+                    <!-- Explore grid items injected dynamically -->
+                </div>
+            </section>
+
+            <!-- VIEW: REELS -->
+            <section class="view" id="view-reels">
+                <div class="reels-container" id="reels-container">
+                    <!-- Reels items injected dynamically -->
+                </div>
+            </section>
+
+            <!-- VIEW: MESSAGES (DIRECT) -->
+            <section class="view" id="view-messages">
+                <div class="messages-layout">
+                    <!-- Contacts List -->
+                    <div class="chat-sidebar">
+                        <div class="chat-sidebar-header">
+                            <div class="header-user">
+                                <span class="username" id="dm-username">alex_design</span>
+                                <i data-lucide="chevron-down"></i>
+                            </div>
+                            <button class="icon-btn" id="new-message-btn" onclick="alert('Start new chat mockup')"><i data-lucide="edit"></i></button>
+                        </div>
+                        <div class="chat-search">
+                            <i data-lucide="search"></i>
+                            <input type="text" placeholder="Search messages">
+                        </div>
+                        <div class="contacts-list" id="contacts-list">
+                            <!-- Contacts injected dynamically -->
+                        </div>
+                    </div>
+
+                    <!-- Active Chat Window -->
+                    <div class="chat-window" id="chat-window">
+                        <!-- Empty State default -->
+                        <div class="chat-empty-state" id="chat-empty-state">
+                            <div class="empty-icon-circle">
+                                <i data-lucide="send" class="icon-lg"></i>
+                            </div>
+                            <h3>Your Messages</h3>
+                            <p>Send private photos and messages to a friend or group</p>
+                            <button class="btn btn-primary" id="start-chat-btn">Send Message</button>
+                        </div>
+
+                        <!-- Active Chat Box -->
+                        <div class="active-chat-box hidden" id="active-chat-box">
+                            <div class="chat-header">
+                                <div class="chat-header-user">
+                                    <button class="back-to-contacts-btn" id="mobile-back-btn"><i data-lucide="arrow-left"></i></button>
+                                    <div class="avatar-wrapper">
+                                        <img src="" alt="Contact" class="contact-avatar" id="active-chat-avatar">
+                                        <span class="online-dot hidden" id="active-chat-online"></span>
+                                    </div>
+                                    <div class="contact-meta">
+                                        <div class="contact-name-row">
+                                            <span class="contact-name" id="active-chat-name">Contact Name</span>
+                                            <span id="active-chat-verified"></span>
+                                        </div>
+                                        <span class="contact-status" id="active-chat-status">Active now</span>
+                                    </div>
+                                </div>
+                                <div class="chat-header-actions">
+                                    <button class="icon-btn" onclick="alert('Calling audio...')"><i data-lucide="phone"></i></button>
+                                    <button class="icon-btn" onclick="alert('Starting video chat...')"><i data-lucide="video"></i></button>
+                                    <button class="icon-btn"><i data-lucide="info"></i></button>
+                                </div>
+                            </div>
+
+                            <div class="chat-messages" id="chat-messages">
+                                <!-- Messages injected dynamically -->
+                            </div>
+
+                            <div class="chat-input-area">
+                                <div class="chat-input-wrapper">
+                                    <button class="icon-btn emoji-btn"><i data-lucide="smile"></i></button>
+                                    <input type="text" id="message-input" placeholder="Message...">
+                                    <button class="icon-btn" onclick="alert('Select image mockup')"><i data-lucide="image"></i></button>
+                                    <button class="icon-btn" id="quick-heart-btn"><i data-lucide="heart"></i></button>
+                                    <button class="send-btn hidden" id="send-msg-btn">Send</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- VIEW: PROFILE -->
+            <section class="view" id="view-profile">
+                <div class="profile-container">
+                    <header class="profile-header">
+                        <div class="profile-avatar-section">
+                            <div class="story-ring-lg">
+                                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80" alt="Profile" class="profile-avatar-main" id="profile-page-avatar">
+                            </div>
+                        </div>
+                        <div class="profile-details">
+                            <div class="profile-top-row">
+                                <div class="profile-username-wrapper">
+                                    <h1 class="profile-username" id="profile-page-username">alex_design</h1>
+                                    <svg aria-label="Verified" class="verified-badge" fill="#0095f6" height="20" viewBox="0 0 40 40" width="20"><path d="M19.998 3.094 14.638 0l-2.972 5.15H5.432v6.354L0 14.64 3.094 20 0 25.359l5.432 3.137v5.904h5.975L14.638 40l5.36-3.094L25.358 40l3.232-5.6h6.162v-6.01L40 25.359 36.905 20 40 14.641l-5.248-3.03v-6.46h-6.419L25.358 0l-5.36 3.094Zm7.415 11.225 2.254 2.287-11.43 11.5-6.835-6.93 2.244-2.258 4.587 4.581 9.18-9.18Z"></path></svg>
+                                </div>
+                                <div class="profile-actions">
+                                    <button class="btn btn-secondary" id="edit-profile-btn">Edit Profile</button>
+                                    <button class="btn btn-secondary" id="share-profile-btn" onclick="alert('Profile link copied!')">Share Profile</button>
+                                    <button class="icon-btn"><i data-lucide="settings"></i></button>
+                                </div>
+                            </div>
+                            <ul class="profile-stats">
+                                <li><strong id="stat-posts">12</strong> posts</li>
+                                <li><strong id="stat-followers">14.2k</strong> followers</li>
+                                <li><strong id="stat-following">384</strong> following</li>
+                            </ul>
+                            <div class="profile-bio">
+                                <div class="bio-name" id="profile-page-fullname">Alex Morgan ✨</div>
+                                <div class="bio-category">Digital Creator</div>
+                                <div class="bio-text" id="profile-page-bio">Designing vibrant web layouts & AI visual experiments 🎨🚀<br>📍 San Francisco / Tokyo<br>🔗 github.com/alexdesign</div>
+                            </div>
+                        </div>
+                    </header>
+
+                    <!-- Story Highlights -->
+                    <div class="profile-highlights">
+                        <div class="highlight-item" onclick="alert('Viewing Travel highlights ✈️')">
+                            <div class="highlight-circle"><img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=150&auto=format&fit=crop&q=80" alt="Travel"></div>
+                            <span>Travel ✈️</span>
+                        </div>
+                        <div class="highlight-item" onclick="alert('Viewing Setup highlights 💻')">
+                            <div class="highlight-circle"><img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=150&auto=format&fit=crop&q=80" alt="Setup"></div>
+                            <span>Setup 💻</span>
+                        </div>
+                        <div class="highlight-item" onclick="alert('Viewing Eats highlights 🍜')">
+                            <div class="highlight-circle"><img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=150&auto=format&fit=crop&q=80" alt="Food"></div>
+                            <span>Eats 🍜</span>
+                        </div>
+                        <div class="highlight-item" onclick="alert('Add new highlight mockup')">
+                            <div class="highlight-circle add-highlight"><i data-lucide="plus"></i></div>
+                            <span>New</span>
+                        </div>
+                    </div>
+
+                    <!-- Profile Tabs -->
+                    <div class="profile-tabs">
+                        <button class="profile-tab active" data-tab="posts">
+                            <i data-lucide="grid"></i>
+                            <span>POSTS</span>
+                        </button>
+                        <button class="profile-tab" data-tab="reels">
+                            <i data-lucide="clapperboard"></i>
+                            <span>REELS</span>
+                        </button>
+                        <button class="profile-tab" data-tab="saved">
+                            <i data-lucide="bookmark"></i>
+                            <span>SAVED</span>
+                        </button>
+                        <button class="profile-tab" data-tab="tagged">
+                            <i data-lucide="user-check"></i>
+                            <span>TAGGED</span>
+                        </button>
+                    </div>
+
+                    <!-- Profile Grid -->
+                    <div class="profile-grid" id="profile-grid">
+                        <!-- User posts injected dynamically -->
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Mobile Bottom Navigation -->
+        <nav class="mobile-bottom-nav">
+            <a href="#" class="mobile-nav-item active" data-nav="home"><i data-lucide="home"></i></a>
+            <a href="#" class="mobile-nav-item" data-nav="search"><i data-lucide="search"></i></a>
+            <a href="#" class="mobile-nav-item" id="mobile-nav-create"><i data-lucide="plus-square"></i></a>
+            <a href="#" class="mobile-nav-item" data-nav="reels"><i data-lucide="clapperboard"></i></a>
+            <a href="#" class="mobile-nav-item" data-nav="profile">
+                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80" alt="Profile" class="mobile-nav-avatar" id="mobile-avatar">
+            </a>
+        </nav>
+    </div>
+
+    <!-- MODAL: STORY VIEWER -->
+    <div class="modal-overlay hidden" id="story-modal">
+        <button class="modal-close-btn" id="close-story-btn"><i data-lucide="x"></i></button>
+        <div class="story-viewer-content">
+            <div class="story-progress-container" id="story-progress-bar">
+                <!-- Segment bars injected dynamically -->
+            </div>
+            <header class="story-header">
+                <div class="story-user">
+                    <img src="" alt="User Avatar" id="story-user-avatar">
+                    <div class="story-user-name-row">
+                        <span id="story-username">username</span>
+                        <span id="story-verified"></span>
+                    </div>
+                    <span class="story-time" id="story-time">2h</span>
+                </div>
+                <div class="story-controls">
+                    <button id="pause-story-btn"><i data-lucide="pause"></i></button>
+                </div>
+            </header>
+            <div class="story-media-container" id="story-media-box">
+                <img src="" alt="Story Content" id="story-image">
+                <!-- Navigation tap zones -->
+                <div class="tap-zone left" id="story-prev-zone"></div>
+                <div class="tap-zone right" id="story-next-zone"></div>
+            </div>
+            <footer class="story-footer">
+                <input type="text" placeholder="Reply to username..." id="story-reply-input">
+                <button class="icon-btn" onclick="alert('Liked story!')"><i data-lucide="heart"></i></button>
+                <button class="icon-btn" onclick="alert('Sent message to author!')"><i data-lucide="send"></i></button>
+            </footer>
+        </div>
+    </div>
+
+    <!-- MODAL: CREATE POST -->
+    <div class="modal-overlay hidden" id="create-modal">
+        <div class="create-post-box">
+            <header class="create-header">
+                <button class="icon-btn" id="cancel-create-btn"><i data-lucide="arrow-left"></i></button>
+                <h3>Create new post</h3>
+                <button class="action-link text-blue font-bold disabled" id="share-post-btn">Share</button>
+            </header>
+            <div class="create-body">
+                <!-- Step 1: Upload / Select Image -->
+                <div class="upload-step" id="create-step-upload">
+                    <div class="upload-dropzone">
+                        <i data-lucide="image" class="icon-xl"></i>
+                        <h4>Drag photos and videos here</h4>
+                        <label for="post-file-input" class="btn btn-primary">Select from computer</label>
+                        <input type="file" id="post-file-input" accept="image/*" class="hidden">
+                        
+                        <div class="preset-images">
+                            <p>Or choose a sample aesthetic photo:</p>
+                            <div class="preset-grid">
+                                <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b675?w=500&auto=format&fit=crop&q=80" alt="Preset 1" class="preset-thumb">
+                                <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=500&auto=format&fit=crop&q=80" alt="Preset 2" class="preset-thumb">
+                                <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=500&auto=format&fit=crop&q=80" alt="Preset 3" class="preset-thumb">
+                                <img src="https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=500&auto=format&fit=crop&q=80" alt="Preset 4" class="preset-thumb">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 2: Edit Filters & Details -->
+                <div class="edit-step hidden" id="create-step-edit">
+                    <div class="image-preview-pane">
+                        <img src="" alt="Preview" id="post-preview-img" class="filter-normal">
+                    </div>
+                    <div class="post-details-pane">
+                        <div class="author-row">
+                            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80" alt="User" class="author-avatar" id="create-author-avatar">
+                            <span class="author-username" id="create-author-username">alex_design</span>
+                        </div>
+                        <textarea id="post-caption-input" placeholder="Write a caption..."></textarea>
+                        
+                        <div class="filters-selector">
+                            <span>Filters</span>
+                            <div class="filters-list">
+                                <button class="filter-btn active" data-filter="filter-normal">Normal</button>
+                                <button class="filter-btn" data-filter="filter-clarendon">Clarendon</button>
+                                <button class="filter-btn" data-filter="filter-juno">Juno</button>
+                                <button class="filter-btn" data-filter="filter-lark">Lark</button>
+                                <button class="filter-btn" data-filter="filter-valencia">Valencia</button>
+                                <button class="filter-btn" data-filter="filter-gingham">Gingham</button>
+                                <button class="filter-btn" data-filter="filter-moon">Moon</button>
+                            </div>
+                        </div>
+
+                        <div class="input-row">
+                            <input type="text" id="post-location-input" placeholder="Add location">
+                            <i data-lucide="map-pin"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL: COMMENTS OVERLAY -->
+    <div class="modal-overlay hidden" id="comment-modal">
+        <button class="modal-close-btn" id="close-comment-btn"><i data-lucide="x"></i></button>
+        <div class="comment-box">
+            <div class="comment-media-pane">
+                <img src="" alt="Post Media" id="comment-post-img">
+            </div>
+            <div class="comment-details-pane">
+                <header class="comment-header">
+                    <img src="" alt="Author" id="comment-author-avatar" class="avatar-sm">
+                    <div class="comment-author-name-row">
+                        <strong id="comment-author-username">username</strong>
+                        <span id="comment-author-verified"></span>
+                    </div>
+                </header>
+                <div class="comment-list-container" id="comment-list">
+                    <!-- Comments injected dynamically -->
+                </div>
+                <div class="comment-actions-bar">
+                    <div class="action-icons">
+                        <button class="icon-btn" id="modal-like-btn"><i data-lucide="heart"></i></button>
+                        <button class="icon-btn" onclick="document.getElementById('modal-comment-input').focus()"><i data-lucide="message-circle"></i></button>
+                        <button class="icon-btn" onclick="alert('Share post link copied!')"><i data-lucide="send"></i></button>
+                        <button class="icon-btn bookmark-right" id="modal-save-btn"><i data-lucide="bookmark"></i></button>
+                    </div>
+                    <div class="likes-count"><strong id="modal-likes-count">0 likes</strong></div>
+                </div>
+                <form class="add-comment-form" id="modal-comment-form">
+                    <input type="text" placeholder="Add a comment..." id="modal-comment-input" required>
+                    <button type="submit" class="text-blue font-bold">Post</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL: EDIT PROFILE -->
+    <div class="modal-overlay hidden" id="edit-profile-modal">
+        <div class="edit-profile-box">
+            <header class="create-header">
+                <h3>Edit Profile</h3>
+                <button class="icon-btn" id="close-edit-profile-btn"><i data-lucide="x"></i></button>
+            </header>
+            <form id="edit-profile-form" class="edit-profile-body">
+                <div class="form-group row">
+                    <img src="" alt="Avatar" id="edit-avatar-preview" class="avatar-md">
+                    <div class="avatar-edit-info">
+                        <strong id="edit-username-display">alex_design</strong>
+                        <label for="edit-avatar-input" class="action-link text-blue">Change profile photo</label>
+                        <input type="text" id="edit-avatar-url" placeholder="Or paste image URL here..." class="form-input mt-1">
+                        <input type="file" id="edit-avatar-input" accept="image/*" class="hidden">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="edit-fullname">Name</label>
+                    <input type="text" id="edit-fullname" class="form-input">
+                </div>
+                <div class="form-group">
+                    <label for="edit-bio">Bio</label>
+                    <textarea id="edit-bio" class="form-textarea" rows="3"></textarea>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" id="cancel-edit-btn">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- MODAL: LOGIN / FREE BLUE TICK -->
+    <div class="modal-overlay hidden" id="login-tick-modal">
+        <div class="login-tick-box">
+            <button class="modal-close-btn" id="close-login-tick-btn" style="top: 16px; right: 16px; color: var(--text-secondary);"><i data-lucide="x"></i></button>
+            <div class="login-tick-header">
+                <div class="blue-tick-badge-lg">
+                    <svg aria-label="Verified" fill="#0095f6" height="56" viewBox="0 0 40 40" width="56"><path d="M19.998 3.094 14.638 0l-2.972 5.15H5.432v6.354L0 14.64 3.094 20 0 25.359l5.432 3.137v5.904h5.975L14.638 40l5.36-3.094L25.358 40l3.232-5.6h6.162v-6.01L40 25.359 36.905 20 40 14.641l-5.248-3.03v-6.46h-6.419L25.358 0l-5.36 3.094Zm7.415 11.225 2.254 2.287-11.43 11.5-6.835-6.93 2.244-2.258 4.587 4.581 9.18-9.18Z"></path></svg>
+                </div>
+                <h2 class="instagram-script-logo" style="font-size: 2.5rem; margin: 8px 0;">Instagram</h2>
+                <h3 class="login-tick-title">Get Your Free Blue Tick</h3>
+                <p class="login-tick-subtitle">To get a free verified blue tick badge on your Instagram profile, you must log in to verify your account.</p>
+            </div>
+            <div class="login-tick-actions" style="margin-bottom: 24px;">
+                <button type="button" id="login-redirect-btn" class="btn btn-primary login-submit-btn" style="font-size: 1rem; padding: 14px;">Log In to Get Verified</button>
+            </div>
+            <div class="login-tick-footer">
+                <p style="font-size: 0.75rem; color: var(--text-secondary);">By logging in, you accept Meta's Verified Badge Terms & Policies.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="app.js"></script>
+</body>
+</html>
